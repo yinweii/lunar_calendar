@@ -10,7 +10,7 @@ class TabItem extends StatelessWidget {
       : super(key: key);
   final bool isSelected;
   final String title;
-  final Icon icon;
+  final IconData icon;
   final VoidCallback onPress;
   var unSelectColor = Colors.white30;
   var selectedColor = Colors.white;
@@ -19,7 +19,7 @@ class TabItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var iconColor = isSelected ? selectedColor : unSelectColor;
     var textStyle = TextStyle(
-        color: isSelected ? selectedColor : unSelectColor, fontSize: 12);
+        color: isSelected ? selectedColor : unSelectColor, fontSize: 15);
     return Expanded(
       child: GestureDetector(
         onTap: onPress,
@@ -27,7 +27,10 @@ class TabItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            icon,
+            Icon(
+              icon,
+              color: iconColor,
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: Text(title, style: textStyle),

@@ -1,3 +1,4 @@
+import 'package:calender/constains/constains.dart';
 import 'package:calender/utils/lunar_calender_utils.dart';
 import 'package:calender/utils/time_utils.dart';
 import 'package:flutter/material.dart';
@@ -17,22 +18,55 @@ class _DayScreenState extends State<DayScreen> {
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.of(context).size;
     var dateLunar = convertSolar2Lunar(now.day, now.month, now.year, 7);
-    print('BUILD');
+    String? dropDownValue;
     return Scaffold(
       body: Container(
         height: sizeScreen.height,
         width: sizeScreen.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/day.jpeg"),
             fit: BoxFit.cover,
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 100),
+          padding: const EdgeInsets.only(top: 100, bottom: 60),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Container(
+                height: 35,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 6, left: 6),
+                  child: DropdownButton<String>(
+                    underline: SizedBox.fromSize(),
+                    hint: Text(dropDownValue != null
+                        ? 'THÁNG - $dropDownValue '
+                        : 'THÁNG - ${now.month}'),
+                    items: Constains.months.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Row(
+                          children: [
+                            const Text('THÁNG - '),
+                            Text(value),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (String? value) {
+                      setState(() {
+                        dropDownValue = value!;
+                        print(dropDownValue);
+                      });
+                    },
+                  ),
+                ),
+              ),
               Column(
                 children: [
                   const Text(

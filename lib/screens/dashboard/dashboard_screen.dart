@@ -23,7 +23,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      print(_selectedIndex);
     });
   }
 
@@ -47,17 +46,17 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 ItemData(
                   index: 0,
                   title: "Ngày",
-                  icon: const Icon(Icons.today),
+                  icon: Icons.today,
                 ),
                 ItemData(
-                  index: 0,
+                  index: 1,
                   title: "Tháng",
-                  icon: const Icon(Icons.today),
+                  icon: Icons.date_range,
                 ),
                 ItemData(
-                  index: 0,
+                  index: 2,
                   title: "Cài đặt",
-                  icon: const Icon(Icons.today),
+                  icon: Icons.settings,
                 ),
               ],
               currentIndex: _selectedIndex,
@@ -66,7 +65,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           ],
         ),
       ),
-
       // bottomNavigationBar: BottomNavigationBar(
       //   items: const <BottomNavigationBarItem>[
       //     BottomNavigationBarItem(
@@ -119,7 +117,7 @@ class BottomTab extends StatelessWidget {
       left: 0,
       height: 60,
       child: Container(
-        decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+        decoration: BoxDecoration(color: Colors.black.withOpacity(0.35)),
         child: Row(children: children),
       ),
     );
